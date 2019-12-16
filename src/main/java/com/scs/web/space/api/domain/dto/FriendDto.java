@@ -12,4 +12,8 @@ import lombok.Data;
 public class FriendDto {
     private Integer fromId;
     private Integer toId;
+    private  String nickname;
+    private  String avatar;
+    private  String autograph;
+
 }

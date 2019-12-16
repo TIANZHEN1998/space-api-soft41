@@ -25,7 +25,4 @@ public class AccountController {
         return accountService.getUserAccounts(id);
     }
 
-
-
-
 }

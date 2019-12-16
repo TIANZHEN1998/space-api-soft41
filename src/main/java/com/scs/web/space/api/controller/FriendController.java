@@ -1,13 +1,14 @@
 package com.scs.web.space.api.controller;
 
+import com.scs.web.space.api.domain.dto.FriendDto;
 import com.scs.web.space.api.service.FriendService;
 import com.scs.web.space.api.util.Result;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author wf
@@ -16,7 +17,7 @@ import javax.annotation.Resource;
  * @Date 2019/12/4
  */
 @RestController
-@RequestMapping(value = "/api/dynamic")
+@RequestMapping(value = "/api/friend")
 
 public class FriendController {
     @Resource
@@ -25,5 +26,17 @@ public class FriendController {
     @GetMapping(value = "/{id}")
     Result getFriendDynamic(@PathVariable int id){
         return friendService.getFriendDynamic(id);
+    }
+
+    /**
+     * 根据好友的id获取自己的好友(成功)
+     * * @param from_id
+     * @param to_id
+     * @return
+     */
+    @PostMapping(value = "/listfriend/{from_id}/{to_id}")
+    List<FriendDto> listfrined(@PathVariable("from_id") Integer from_id,
+                             @PathVariable("to_id") Integer to_id){
+       return  friendService.listFriend(from_id, to_id);
     }
 }

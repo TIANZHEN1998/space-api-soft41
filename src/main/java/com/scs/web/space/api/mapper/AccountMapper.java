@@ -11,6 +11,12 @@ import java.util.Map;
 
 public interface AccountMapper {
 
+    /**
+     * 计算用户总数的接口
+     * @param userId
+     * @return
+     * @throws SQLException
+     */
     @Results({
             @Result(property = "nickname", column = "nickname"),
             @Result(property = "avatar", column = "avatar")
@@ -21,6 +27,4 @@ public interface AccountMapper {
             "ON t1.user_id = t2.id " +
             "WHERE user_id = #{userId} ")
     Map getUserAccount(int userId) throws SQLException;
-
-
 }

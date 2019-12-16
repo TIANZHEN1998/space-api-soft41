@@ -67,6 +67,11 @@ public class NotesServiceImpl implements NotesService {
         return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
     }
 
+    /***
+     * 增加日志
+     * @param notesDto
+     * @return
+     */
     @Override
     public Result insertNotes(NotesDto notesDto) {
         int n = 0;
@@ -89,6 +94,11 @@ public class NotesServiceImpl implements NotesService {
         return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
     }
 
+    /**
+     * 修改日志信息
+     * @param notesDto
+     * @return
+     */
     @Override
     public Result updateNotes(NotesDto notesDto) {
         int n = 0;

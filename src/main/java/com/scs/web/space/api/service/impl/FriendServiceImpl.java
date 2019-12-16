@@ -1,5 +1,6 @@
 package com.scs.web.space.api.service.impl;
 
+import com.scs.web.space.api.domain.dto.FriendDto;
 import com.scs.web.space.api.domain.entity.Friend;
 import com.scs.web.space.api.mapper.FriendMapper;
 import com.scs.web.space.api.service.FriendService;
@@ -44,5 +45,16 @@ public class FriendServiceImpl implements FriendService {
     public Friend findStatus(int from_id, int to_id)
     {
         return null;
+    }
+
+    @Override
+    public List<FriendDto> listFriend(Integer from_id, Integer to_id) {
+        List<FriendDto> listFriend =new ArrayList<>();
+        try {
+            listFriend=friendMapper.listFrinend(from_id, to_id);
+        } catch (SQLException e) {
+            logger.error("好友展示查询异常");
+        }
+        return listFriend;
     }
 }

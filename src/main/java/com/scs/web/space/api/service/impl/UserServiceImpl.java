@@ -99,7 +99,7 @@ public class UserServiceImpl implements UserService {
             } else {
                 User saveUser=new User();
                 saveUser.setMobile(mobile);
-                saveUser.setNickname(mobile);
+                saveUser.setNickname("用户"+mobile);
                 saveUser.setIntroduction("你和冬天一起来了");
                 saveUser.setAvatar("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/avatar/default.png");
                 saveUser.setCreateTime(Timestamp.valueOf(LocalDateTime.now()));
@@ -109,8 +109,8 @@ public class UserServiceImpl implements UserService {
                     logger.error("新增用户出现异常");
                     return Result.failure(ResultCode.USER_SIGN_UP_FAIL);
                 }
+                return  Result.success(saveUser);
             }
-            return Result.success(userDto);
         }
         return  Result.failure(ResultCode.USER_VERIFY_CODE_ERROR);
     }

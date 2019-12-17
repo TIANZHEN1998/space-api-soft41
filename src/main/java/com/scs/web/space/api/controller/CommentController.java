@@ -29,9 +29,4 @@ private CommentService commentService;
     Result insertComment(@RequestBody CommentVO comment){
         return commentService.insertcomment(comment);
     }
-
-
-
-
-
 }

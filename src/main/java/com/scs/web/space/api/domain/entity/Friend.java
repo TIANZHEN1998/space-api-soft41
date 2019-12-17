@@ -18,7 +18,6 @@ public class Friend {
     private Integer fromId;
     private Integer toId;
     private Integer status;
-    private Timestamp createTime;
     private UserVo userVo;
     private Album album;
 }

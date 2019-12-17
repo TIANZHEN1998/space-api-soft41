@@ -27,5 +27,25 @@ public interface FriendService {
      */
     List<FriendDto> listFriend(Integer from_id,Integer to_id);
 
+    /**
+     * 查询双向非好友（status为0）
+     * @param from_id
+     * @param to_id
+     * @return
+     */
+    List<FriendDto> listnotFriend(Integer from_id,Integer to_id);
 
+    /**
+     * 发送好友申请，此时的状态status为0
+     * @param friend
+     * @return
+     */
+   Result insertFriend(FriendDto friend);
+
+    /**
+     * 同意好友，将0变为1
+     * @param friendDto
+     * @return
+     */
+   Result updatestatus(FriendDto friendDto);
 }

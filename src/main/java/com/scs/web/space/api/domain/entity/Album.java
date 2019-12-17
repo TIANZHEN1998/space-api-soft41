@@ -2,6 +2,7 @@ package com.scs.web.space.api.domain.entity;
 
 import com.scs.web.space.api.domain.vo.UserVo;
 import lombok.Data;
+import lombok.NonNull;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -22,3 +23,4 @@ public class Album {
     private Timestamp createTime;
     private UserVo userVo;
 }
+

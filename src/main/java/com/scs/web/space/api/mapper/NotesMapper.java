@@ -17,6 +17,11 @@ import java.util.Map;
  **/
 public interface NotesMapper {
 
+
+
+
+
+
     @Results(id = "notes",value = {
             @Result(property = "id",column = "id"),
             @Result(property = "userId",column = "user_id"),
@@ -42,6 +47,14 @@ public interface NotesMapper {
             "WHERE user_id = #{userId} " +
             "LIMIT ${pageSize*(currentPage-1)},#{pageSize}")
     List<Map> getByUserId(int userId,int currentPage, int pageSize) throws SQLException;
+
+    /**
+     * 查询所有日志
+     * @return
+     * @throws SQLException
+     */
+    @Select("select * from  t_notes")
+    List<Notes> selectallnotes() throws  SQLException;
 
 
     /* @ResultMap("notes")*/
@@ -112,4 +125,8 @@ public interface NotesMapper {
                     many = @Many(select = "com.scs.web.space.api.mapper.CommentMapper.getByUserId")),
     })
     List<NotesVo> getFriendCommentById(@Param("id") int id)throws SQLException;
+
+
+
+
 }

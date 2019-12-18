@@ -4,6 +4,7 @@ package com.scs.web.space.api.service;
 import com.scs.web.space.api.domain.dto.NotesDto;
 import com.scs.web.space.api.domain.dto.Page;
 import com.scs.web.space.api.domain.entity.Notes;
+import com.scs.web.space.api.domain.vo.NotesVo;
 import com.scs.web.space.api.util.Result;
 
 import java.util.List;
@@ -72,4 +73,10 @@ public interface NotesService {
     Result selectNotesByUserId(int userId);
 
     Result getPersonDynamic(int userId);
+
+    /**
+     * 查询所有的日志
+     * @return
+     */
+    List<Notes> selectallnotes();
 }

@@ -81,7 +81,6 @@ public class NotesServiceImpl implements NotesService {
             notes.setTitle(notesDto.getTitle());
             notes.setContent(notesDto.getContent());
             notes.setEditStatus(notesDto.getEditStatus());
-            notes.setAccessStatus(notesDto.getAccessStatus());
             notes.setForwardStatus(notesDto.getForwardStatus());
             notes.setCreateTime(Timestamp.valueOf(LocalDateTime.now()));
             n = notesMapper.insertNotes(notes);
@@ -109,7 +108,6 @@ public class NotesServiceImpl implements NotesService {
             notes.setContent(notesDto.getContent());
             notes.setEditStatus(notesDto.getEditStatus());
             notes.setForwardStatus(notesDto.getForwardStatus());
-            notes.setAccessStatus(notesDto.getAccessStatus());
             notes.setCreateTime(Timestamp.valueOf(LocalDateTime.now()));
             n = notesMapper.updateNotes(notes);
         } catch (SQLException e) {
@@ -167,4 +165,17 @@ public class NotesServiceImpl implements NotesService {
         return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
     }
 
+    @Override
+    public List<Notes> selectallnotes() {
+        List<Notes> notesVoList=new ArrayList<>();
+        try {
+            notesVoList=notesMapper.selectallnotes();
+        } catch (SQLException e) {
+            logger.error("所有日志查询异常");
+        }
+        System.out.println("notelist"+notesVoList.size());
+        return  notesVoList;
+    }
+
 }
+

@@ -2,6 +2,8 @@ package com.scs.web.space.api.controller;
 
 import com.scs.web.space.api.domain.dto.NotesDto;
 import com.scs.web.space.api.domain.dto.Page;
+import com.scs.web.space.api.domain.entity.Notes;
+import com.scs.web.space.api.domain.vo.NotesVo;
 import com.scs.web.space.api.service.NotesService;
 import com.scs.web.space.api.util.Result;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +33,14 @@ public class NotesController {
         return notesService.getByUserId(page.getUserId(), page.getCurrentPage(), page.getPageSize());
     }
 
+    /**
+     * 查询所有的日志
+     * @return
+     */
+    @PostMapping(value = "/selectallnotes")
+    List<Notes>  selectallnotes() {
+        return  notesService.selectallnotes();
+    }
     @GetMapping(value = "/d/{id}")
     Result getPersonDynamic(@PathVariable int id){
         return notesService.getPersonDynamic(id);
@@ -47,6 +57,7 @@ public class NotesController {
     Result selectNotes(@PathVariable int id){
         return notesService.selectNotesByUserId(id);
     }
+
 
     /**
      * 根据日志id获取日志详情（成功）

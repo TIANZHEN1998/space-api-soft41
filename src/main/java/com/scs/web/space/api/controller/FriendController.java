@@ -36,8 +36,9 @@ public class FriendController {
      * @return
      */
     @PostMapping(value = "/listfriend/{from_id}/{to_id}")
-    List<FriendDto> listfrined(@PathVariable("from_id") Integer from_id,
-                             @PathVariable("to_id") Integer to_id){
+    List<FriendDto> listfrined(@PathVariable Integer from_id,
+                             @PathVariable Integer to_id){
+        System.out.println(from_id+"   "+to_id);
        return  friendService.listFriend(from_id, to_id);
     }
 

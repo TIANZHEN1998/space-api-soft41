@@ -24,7 +24,7 @@ public class Notes {
     private Integer likes;
     private Integer forwards;
     private Integer editStatus;
-    private Integer accessStatus;
+    private String accessStatus;
     private Short forwardStatus;
     private Timestamp createTime;
     private UserVo userVo;

@@ -3,7 +3,6 @@ package com.scs.web.space.api.controller;
 import com.scs.web.space.api.domain.entity.Album;
 import com.scs.web.space.api.service.AlbumService;
 import com.scs.web.space.api.util.Result;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -52,7 +51,10 @@ public class AlbumController {
         return  albumService.deletealbum(id);
     }
 
-
+@PostMapping(value = "/getalbumbyuserid")
+Result getbyuserid( @PathVariable  int user_id){
+        return  albumService.selectByUserId(user_id);
+}
 
 
 

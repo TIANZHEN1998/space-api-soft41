@@ -50,4 +50,6 @@ public interface AlbumMapper {
     @Select("SELECT * FROM t_album WHERE user_id = #{userId} ")
 
     Album selectByUserId(@Param("userId") int userId) throws SQLException;
+
+
 }

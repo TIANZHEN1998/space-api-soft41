@@ -3,6 +3,8 @@ package com.scs.web.space.api.service;
 import com.scs.web.space.api.domain.entity.Album;
 import com.scs.web.space.api.util.Result;
 
+import java.util.List;
+
 
 /**
  * @ClassName AlbumService
@@ -16,13 +18,13 @@ public interface AlbumService {
      * @param album
      * @return
      */
-    Result insert(Album album);
+    int insert(Album album);
 
     /**
      * 查询所有相册
      * @return
      */
-    Result selectAll();
+    List<Album> selectAll();
 
 
     /**
@@ -37,5 +39,5 @@ public interface AlbumService {
      * @param id
      * @return
      */
-    Result delete(int id);
+    Result deletealbum(int id);
 }

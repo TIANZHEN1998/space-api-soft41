@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @ClassName AlbumServiceImpl
@@ -28,33 +29,30 @@ public class AlbumServiceImpl implements AlbumService {
     private AlbumMapper albumMapper;
 
     @Override
-    public Result insert(Album album) {
+    public int insert(Album album) {
+        int n=0;
         try {
             Album album1 = new Album();
             album1.setUserId(album.getUserId());
             album1.setAlbumName(album.getAlbumName());
             album1.setCover(album.getCover());
             album1.setCreateTime(Timestamp.valueOf(LocalDateTime.now()));
-            albumMapper.insert(album1);
+           n= albumMapper.insert(album1);
         } catch (SQLException e) {
             logger.error("新增相册异常");
-            return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
         }
-        return Result.success();
+        return n;
     }
 
     @Override
-    public Result selectAll() {
-       /* AlbumVo albumList = null;
+    public List<Album> selectAll() {
+      List<Album> albumList=null;
         try {
-            albumList = albumMapper.getAlbumByUserId(2);
+            albumList=albumMapper.selectallalbus();
         } catch (SQLException e) {
-            logger.error("相册查询异常");
+            e.printStackTrace();
         }
-        if (albumList != null) {
-            return Result.success(albumList);
-        }*/
-        return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
+        return albumList ;
     }
 
     @Override
@@ -73,7 +71,7 @@ public class AlbumServiceImpl implements AlbumService {
 
 
     @Override
-    public Result delete(int id) {
+    public Result deletealbum(int id) {
         try {
             albumMapper.delete(id);
         } catch (SQLException e) {

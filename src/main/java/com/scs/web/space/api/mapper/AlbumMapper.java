@@ -3,7 +3,6 @@ package com.scs.web.space.api.mapper;
 import com.scs.web.space.api.domain.entity.Album;
 import com.scs.web.space.api.domain.vo.AlbumVo;
 import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.jdbc.SQL;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -16,21 +15,22 @@ import java.util.List;
  **/
 public interface AlbumMapper {
     /**
+     * 查询松油的相册
+     * @return
+     * @throws SQLException
+     */
+    @Select("select * from  t_album")
+    List<Album> selectallalbus() throws  SQLException;
+    /**
      * 新增相册
      * @param album
      * @return int
      * @throws SQLException
      */
-    @Insert("INSERT INTO t_album VALUES (null,#{userId},#{name},#{cover},#{createTime}) " )
-    void insert(Album album) throws SQLException;
+    @Insert("INSERT INTO t_album(id,user_id,album_name,cover,photos,create_time) VALUES (null,#{userId},#{albumName}," +
+            "#{cover},#{photos},#{createTime}) " )
+    int insert(Album album) throws SQLException;
 
-    /**
-     * 按创建时间升序查询所有相册
-     * @return List<album>
-     * @throws SQLException
-     */
-    @Select("SELECT * FROM t_album WHERE user_id = #{userId} ORDER BY create_time ASC ")
-    AlbumVo getAlbumByUserId(@Param("userId") int userId) throws SQLException;
 
     /**
      * 根据相册id删除相册记录

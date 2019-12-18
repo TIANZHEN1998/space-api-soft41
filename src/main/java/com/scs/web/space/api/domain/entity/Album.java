@@ -21,6 +21,5 @@ public class Album {
     private String albumName;
     private String cover;
     private Timestamp createTime;
-    private UserVo userVo;
 }
 
